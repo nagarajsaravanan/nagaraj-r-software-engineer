@@ -1,0 +1,215 @@
+/* ==========================================================================
+   DESIGN SYSTEM - MULTI-THEME FOUNDATION
+   Commander: NAGARAJ R
+   Themes: Luminous Light, Minimal Monochrome (White/Grey/Black), Executive Slate (HR Friendly), Cyber Emerald
+   ========================================================================== */
+
+/* 1. LUMINOUS LIGHT (Default) */
+:root,
+[data-theme="luminous"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8faff;
+  --bg-gradient: radial-gradient(circle at 50% -10%, #ffffff 0%, #f4f6ff 40%, #faf8ff 80%, #ffffff 100%);
+  --ambient-halo-1: radial-gradient(circle, rgba(224, 231, 255, 0.8) 0%, rgba(243, 237, 255, 0.55) 45%, rgba(255, 255, 255, 0) 70%);
+  --ambient-halo-2: radial-gradient(circle, rgba(233, 222, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+  
+  --card-bg: #ffffff;
+  --card-sub-bg: #ffffff;
+  --card-sub-hover: #fcfdff;
+  
+  --text-primary: #1e1b4b;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  
+  --accent-vibrant: #4f46e5;
+  --accent-secondary: #8b5cf6;
+  --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+  
+  --pill-bg: #ffffff;
+  --pill-text: #4f46e5;
+  --badge-bg: #f4eeff;
+  --badge-text: #6d28d9;
+  --chip-bg: #f4eeff;
+  --chip-text: #4338ca;
+  --chip-hover: #e9deff;
+  
+  --shadow-card: 0 25px 60px -15px rgba(79, 70, 229, 0.09), 0 10px 30px -5px rgba(139, 92, 246, 0.07), 0 0 35px rgba(255, 255, 255, 0.95);
+  --shadow-subcard: 0 6px 20px -2px rgba(79, 70, 229, 0.06), 0 2px 8px rgba(139, 92, 246, 0.04);
+  --shadow-subcard-hover: 0 16px 36px -4px rgba(139, 92, 246, 0.16), 0 4px 14px rgba(79, 70, 229, 0.1);
+  --shadow-pill: 0 3px 10px rgba(79, 70, 229, 0.06), 0 1px 3px rgba(139, 92, 246, 0.05);
+  --shadow-pill-hover: 0 6px 16px rgba(139, 92, 246, 0.2);
+  --shadow-btn-primary: 0 8px 26px rgba(79, 70, 229, 0.32);
+  --divider-shadow: 0 1px 0 rgba(79, 70, 229, 0.08);
+  --border-subtle: rgba(79, 70, 229, 0.14);
+
+  color-scheme: light;
+}
+
+/* 2. MINIMAL MONOCHROME (White, Light Grey, Grey, Dark Grey, Black) */
+[data-theme="monochrome"],
+[data-theme="blush"],
+[data-theme="rose"],
+[data-theme="sandstone"] {
+  --bg-primary: #f4f4f5;
+  --bg-secondary: #e4e4e7;
+  --bg-gradient: radial-gradient(circle at 50% -10%, #ffffff 0%, #f4f4f5 45%, #e4e4e7 100%);
+  --ambient-halo-1: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, rgba(113, 113, 122, 0.04) 50%, transparent 70%);
+  --ambient-halo-2: radial-gradient(circle, rgba(39, 39, 42, 0.04) 0%, transparent 70%);
+  
+  --card-bg: #ffffff;
+  --card-sub-bg: #f4f4f5;
+  --card-sub-hover: #e4e4e7;
+  
+  --text-primary: #000000;
+  --text-secondary: #27272a;
+  --text-muted: #71717a;
+  
+  --accent-vibrant: #000000;
+  --accent-secondary: #27272a;
+  --accent-gradient: linear-gradient(135deg, #27272a 0%, #000000 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #3f3f46 0%, #18181b 100%);
+  
+  --pill-bg: #ffffff;
+  --pill-text: #000000;
+  --badge-bg: #e4e4e7;
+  --badge-text: #18181b;
+  --chip-bg: #e4e4e7;
+  --chip-text: #27272a;
+  --chip-hover: #d4d4d8;
+  
+  --shadow-card: 0 20px 45px -10px rgba(0, 0, 0, 0.09), 0 8px 20px -4px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.15);
+  --shadow-subcard: 0 4px 14px -2px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.03);
+  --shadow-subcard-hover: 0 12px 28px -4px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-pill: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-pill-hover: 0 4px 14px rgba(0, 0, 0, 0.14);
+  --shadow-btn-primary: 0 6px 20px rgba(0, 0, 0, 0.35);
+  --divider-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  --border-subtle: rgba(0, 0, 0, 0.12);
+
+  color-scheme: light;
+}
+
+/* 3. EXECUTIVE SLATE & NAVY (Manager / Recruiter / HR Friendly) */
+[data-theme="executive"],
+[data-theme="lavender"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-gradient: radial-gradient(circle at 50% -10%, #ffffff 0%, #f1f5f9 45%, #e2e8f0 100%);
+  --ambient-halo-1: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(30, 64, 175, 0.05) 50%, transparent 70%);
+  --ambient-halo-2: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+  
+  --card-bg: #ffffff;
+  --card-sub-bg: #f8fafc;
+  --card-sub-hover: #f1f5f9;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  
+  --accent-vibrant: #1d4ed8;
+  --accent-secondary: #0284c7;
+  --accent-gradient: linear-gradient(135deg, #1d4ed8 0%, #0f172a 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  
+  --pill-bg: #ffffff;
+  --pill-text: #1d4ed8;
+  --badge-bg: #eff6ff;
+  --badge-text: #1e40af;
+  --chip-bg: #eff6ff;
+  --chip-text: #1e40af;
+  --chip-hover: #dbeafe;
+  
+  --shadow-card: 0 20px 45px -10px rgba(15, 23, 42, 0.08), 0 8px 20px -4px rgba(37, 99, 235, 0.05), 0 0 1px rgba(15, 23, 42, 0.1);
+  --shadow-subcard: 0 4px 14px -2px rgba(15, 23, 42, 0.05), 0 2px 6px rgba(37, 99, 235, 0.03);
+  --shadow-subcard-hover: 0 12px 28px -4px rgba(37, 99, 235, 0.14), 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-pill: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-pill-hover: 0 4px 14px rgba(37, 99, 235, 0.18);
+  --shadow-btn-primary: 0 6px 20px rgba(29, 78, 216, 0.28);
+  --divider-shadow: 0 1px 0 rgba(148, 163, 184, 0.18);
+  --border-subtle: rgba(148, 163, 184, 0.24);
+
+  color-scheme: light;
+}
+
+/* 4. CYBER EMERALD (Obsidian Mint Theme) */
+[data-theme="cyber"] {
+  --bg-primary: #070d0a;
+  --bg-secondary: #0d1712;
+  --bg-gradient: radial-gradient(circle at 50% -10%, #0d2319 0%, #0b1812 45%, #070d0a 100%);
+  --ambient-halo-1: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(5, 150, 105, 0.14) 45%, transparent 70%);
+  --ambient-halo-2: radial-gradient(circle, rgba(52, 211, 153, 0.2) 0%, transparent 70%);
+  
+  --card-bg: #101c16;
+  --card-sub-bg: #16261f;
+  --card-sub-hover: #1c3027;
+  
+  --text-primary: #f0fdf4;
+  --text-secondary: #cbd5e1;
+  --text-muted: #6ee7b7;
+  
+  --accent-vibrant: #10b981;
+  --accent-secondary: #34d399;
+  --accent-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  
+  --pill-bg: #172c23;
+  --pill-text: #a7f3d0;
+  --badge-bg: rgba(16, 185, 129, 0.15);
+  --badge-text: #6ee7b7;
+  --chip-bg: #182e25;
+  --chip-text: #a7f3d0;
+  --chip-hover: #223f33;
+  
+  --shadow-card: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(16, 185, 129, 0.15);
+  --shadow-subcard: 0 8px 24px -3px rgba(0, 0, 0, 0.55), 0 0 15px rgba(16, 185, 129, 0.1);
+  --shadow-subcard-hover: 0 16px 36px -4px rgba(0, 0, 0, 0.7), 0 0 25px rgba(52, 211, 153, 0.25);
+  --shadow-pill: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-pill-hover: 0 6px 18px rgba(16, 185, 129, 0.35);
+  --shadow-btn-primary: 0 8px 26px rgba(16, 185, 129, 0.5);
+  --divider-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(16, 185, 129, 0.22);
+
+  color-scheme: dark;
+}
+
+/* Base Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+html, body {
+  min-height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-primary);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+/* Links & Interactive */
+a {
+  color: var(--accent-vibrant);
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
