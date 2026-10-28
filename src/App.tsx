@@ -1184,7 +1184,7 @@ export default function App() {
 
             <button
               type="button"
-              className="action-pill-btn primary"
+              className="action-pill-btn primary resume-btn-download"
               onClick={handleDownloadResume}
               disabled={downloadState === 'generating'}
               title="Download ATS Resume as PDF"
@@ -1207,10 +1207,10 @@ export default function App() {
                 </>
               )}
             </button>
-            <button type="button" className="action-pill-btn" onClick={() => copyToClipboard('nagaraj.srvn@gmail.com', 'email')}>
+            <button type="button" className="action-pill-btn resume-btn-copy" onClick={() => copyToClipboard('nagaraj.srvn@gmail.com', 'email')}>
               {copiedField === 'email' ? '✓ Copied Email' : '📋 Copy Contact Email'}
             </button>
-            <button type="button" className="action-pill-btn" onClick={() => setViewMode('website')}>
+            <button type="button" className="action-pill-btn resume-btn-return" onClick={() => setViewMode('website')}>
               🌐 Return to Website
             </button>
           </div>
