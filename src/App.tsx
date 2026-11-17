@@ -111,8 +111,11 @@ export default function App() {
       // Apply PDF export class for pristine white ATS styling regardless of active theme
       resumeEl.classList.add('pdf-export-mode')
 
+      // Allow DOM to apply pdf-export-mode styling before capturing canvas
+      await new Promise((r) => setTimeout(r, 60))
+
       const opt = {
-        margin: [8, 8, 8, 8],
+        margin: [72, 72, 72, 72],
         filename: 'Nagaraj_R_Senior_Software_Engineer_Resume.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: {
@@ -123,11 +126,20 @@ export default function App() {
           backgroundColor: '#ffffff'
         },
         jsPDF: {
-          unit: 'mm',
-          format: 'a4',
+          unit: 'pt',
+          format: [596, 842],
           orientation: 'portrait'
         },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        pagebreak: {
+          mode: ['css', 'legacy'],
+          avoid: [
+            '.resume-exp-entry',
+            '.resume-skill-line',
+            '.resume-sheet-header',
+            '.resume-declaration-section',
+            '.resume-divider'
+          ]
+        }
       }
 
       await html2pdf().set(opt).from(resumeEl).save()
@@ -170,7 +182,7 @@ export default function App() {
     {
       category: 'Frontend Development',
       badge: 'UI, State & Responsive Systems',
-      skills: ['React.js', 'Redux', 'HTML5', 'CSS3', 'SCSS', 'Tailwind CSS'],
+      skills: ['Angular', 'React.js', 'Redux', 'HTML5', 'CSS3', 'SCSS', 'Tailwind CSS'],
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="3"></circle>
@@ -259,12 +271,12 @@ export default function App() {
       period: 'June 2024 – April 2025',
       duration: '11 mos',
       highlights: [
-        'Architected and delivered high-availability enterprise web modules using React.js and Node.js for Philips.',
+        'Architected and delivered high-availability enterprise web modules using React.js, Angular, and Node.js for Philips.',
         'Optimized MongoDB aggregation queries and Express REST APIs to reduce data latency.',
         'Engineered a reusable React component library, boosting UI consistency and delivery speed across sprint teams.',
         'Maintained high code quality through active peer code reviews and clean architecture standards.'
       ],
-      tags: ['Enterprise Web', 'React.js', 'Node.js', 'MongoDB', 'REST APIs', 'Agile']
+      tags: ['Enterprise Web', 'Angular', 'React.js', 'Node.js', 'MongoDB', 'REST APIs', 'Agile']
     },
     {
       role: 'Software Development Engineer G II',
@@ -310,7 +322,7 @@ export default function App() {
       title: 'Digital Twin Coil – Philips Healthcare',
       client: 'Philips Healthcare',
       tagline: 'Enterprise healthcare analytics platform for monitoring MRI coil performance and operational insights.',
-      technologies: ['React.js', 'Redux', 'Node.js', 'Express.js', 'MongoDB', 'Vertica'],
+      technologies: ['Angular', 'React.js', 'Redux', 'Node.js', 'Express.js', 'MongoDB', 'Vertica'],
       badge: 'Healthcare Analytics',
       highlights: [
         'Developed interactive dashboards to visualize healthcare equipment performance and analytics data.',
@@ -322,7 +334,7 @@ export default function App() {
       title: 'Daily Management Board – Philips Healthcare',
       client: 'Philips Healthcare',
       tagline: 'Enterprise KPI management platform used for tracking operational metrics and business performance.',
-      technologies: ['React.js', 'Redux', 'Node.js', 'Express.js', 'MongoDB'],
+      technologies: ['Angular', 'React.js', 'Redux', 'Node.js', 'Express.js', 'MongoDB'],
       badge: 'Operational Telemetry & KPIs',
       highlights: [
         'Developed KPI dashboards with data visualization and reporting capabilities.',
@@ -334,7 +346,7 @@ export default function App() {
       title: 'Kripalunidhi (JKP) – Spiritual Content Platform',
       client: 'Spiritual Content Platform',
       tagline: 'Subscription-based content streaming platform supporting digital content delivery.',
-      technologies: ['React.js', 'Redux', 'Node.js', 'Express.js', 'MongoDB', 'AWS S3'],
+      technologies: ['Angular', 'React.js', 'Redux', 'Node.js', 'Express.js', 'MongoDB', 'AWS S3'],
       badge: 'Digital Content Delivery',
       highlights: [
         'Developed responsive web applications for users and administrators.',
@@ -679,7 +691,7 @@ export default function App() {
 
               <div className="summary-body">
                 <p className="summary-paragraph">
-                  <strong>Senior MERN Stack Developer</strong> with <strong>6+ years</strong> of experience building scalable web applications, <strong>OTT platforms</strong>, and enterprise solutions using <strong>React.js</strong>, <strong>Node.js</strong>, <strong>Express.js</strong>, and <strong>MongoDB</strong>. Experienced in designing <strong>REST APIs</strong>, <strong>microservices</strong> and real-time applications. Strong background in product development, performance optimization, and delivering reliable applications using modern engineering practices.
+                  <strong>Senior MERN/MEAN Stack Developer</strong> with <strong>6+ years</strong> of experience building scalable web applications, <strong>OTT platforms</strong>, and enterprise solutions using <strong>Angular</strong>, <strong>React.js</strong>, <strong>Node.js</strong>, <strong>Express.js</strong>, and <strong>MongoDB</strong>. Experienced in designing <strong>REST APIs</strong>, <strong>microservices</strong>, and real-time applications. Strong problem-solving skills with hands-on experience in debugging, troubleshooting, root cause analysis, production issue resolution, and hotfix implementation. Strong background in product development, performance optimization, and delivering reliable applications using modern engineering practices.
                 </p>
               </div>
             </section>
@@ -1215,29 +1227,23 @@ export default function App() {
             </button>
           </div>
 
-          {/* Standard Printable ATS Document Sheet */}
+          {/* Standard Printable ATS Document Sheet (A4 Portrait 596x842pt) */}
           <article className="resume-sheet">
-            {/* Header with Executive Profile Photo on Right */}
+            {/* Header Design matching ATS specifications */}
             <header className="resume-sheet-header">
-              <div className="resume-header-row">
-                <div className="resume-header-info">
-                  <h1 className="resume-name">NAGARAJ R</h1>
-                  <p className="resume-role">Senior Software Engineer</p>
-                  <div className="resume-contact-line">
-                    <span>+91 6374983448</span>
-                    <span>•</span>
-                    <span>nagaraj.srvn@gmail.com</span>
-                    <span>•</span>
-                    <a href="https://nagaraj-r-software-engineer.onrender.com/" target="_blank" rel="noreferrer">nagaraj-r-software-engineer.onrender.com</a>
-                    <span>•</span>
-                    <a href="https://github.com/nagarajsaravanan" target="_blank" rel="noreferrer">github.com/nagarajsaravanan</a>
-                    <span>•</span>
-                    <a href="https://www.linkedin.com/in/nagaraj-r-385049147/" target="_blank" rel="noreferrer">linkedin.com/in/nagaraj-r</a>
-                  </div>
-                </div>
-                <div className="resume-photo-box">
-                  <img src={profilePhoto} alt="Nagaraj R - Senior Software Engineer" className="resume-profile-photo" />
-                </div>
+              <h1 className="resume-name">NAGARAJ R</h1>
+              <p className="resume-role">Senior Software Engineer</p>
+              <div className="resume-contact-line">
+                <span>+91 6374983448</span>
+                <span>•</span>
+                <span>nagaraj.srvn@gmail.com</span>
+                <span>•</span>
+                <a href="https://nagaraj-r-software-engineer.onrender.com/" target="_blank" rel="noreferrer">nagaraj-r-software-engineer.onrender.com</a>
+              </div>
+              <div className="resume-links-line">
+                <a href="https://github.com/nagarajsaravanan" target="_blank" rel="noreferrer">github.com/nagarajsaravanan</a>
+                <span>•</span>
+                <a href="https://www.linkedin.com/in/nagaraj-r-385049147/" target="_blank" rel="noreferrer">linkedin.com/in/nagaraj-r</a>
               </div>
             </header>
 
@@ -1247,7 +1253,7 @@ export default function App() {
             <section className="resume-section">
               <h2 className="resume-section-heading">PROFESSIONAL SUMMARY</h2>
               <p className="resume-summary-text">
-                Senior MERN Stack Developer with 6+ years of experience building scalable web applications, OTT platforms, and enterprise solutions using React.js, Node.js, Express.js, and MongoDB. Experienced in designing REST APIs, microservices and real-time applications. Strong background in product development, performance optimization, and delivering reliable applications using modern engineering practices.
+                Senior MERN/MEAN Stack Developer with 6+ years of experience building scalable web applications, OTT platforms, and enterprise solutions using Angular, React.js, Node.js, Express.js, and MongoDB. Experienced in designing REST APIs, microservices, and real-time applications. Strong problem-solving skills with hands-on experience in debugging, troubleshooting, root cause analysis, production issue resolution, and hotfix implementation. Strong background in product development, performance optimization, and delivering reliable applications using modern engineering practices.
               </p>
             </section>
 
@@ -1263,7 +1269,7 @@ export default function App() {
                 </div>
                 <div className="resume-skill-line">
                   <strong className="resume-skill-label">Frontend Development:</strong>
-                  <span className="resume-skill-val">React.js, Redux, HTML5, CSS3, SCSS, Tailwind CSS</span>
+                  <span className="resume-skill-val">Angular, React.js, Redux, HTML5, CSS3, SCSS, Tailwind CSS</span>
                 </div>
                 <div className="resume-skill-line">
                   <strong className="resume-skill-label">Backend Development:</strong>
@@ -1295,7 +1301,7 @@ export default function App() {
             <hr className="resume-divider" />
 
             {/* Experience */}
-            <section className="resume-section">
+            <section className="resume-section has-job-titles">
               <h2 className="resume-section-heading">PROFESSIONAL EXPERIENCE</h2>
               <div className="resume-exp-list">
                 {experiences.map((exp, idx) => (
@@ -1320,7 +1326,7 @@ export default function App() {
             <hr className="resume-divider" />
 
             {/* Awards & Recognition */}
-            <section className="resume-section">
+            <section className="resume-section has-job-titles">
               <h2 className="resume-section-heading">AWARDS & RECOGNITION</h2>
               <div className="resume-exp-list">
                 {awards.map((award, idx) => (
@@ -1332,7 +1338,7 @@ export default function App() {
                       </div>
                       <div className="resume-exp-period">{award.year}</div>
                     </div>
-                    <p className="resume-summary-text" style={{ marginTop: '4px' }}>
+                    <p className="resume-summary-text resume-award-desc">
                       {award.description}
                     </p>
                   </div>
@@ -1343,7 +1349,7 @@ export default function App() {
             <hr className="resume-divider" />
 
             {/* Key Projects */}
-            <section className="resume-section">
+            <section className="resume-section has-job-titles">
               <h2 className="resume-section-heading">KEY ENTERPRISE PROJECTS</h2>
               <div className="resume-exp-list">
                 {projects.map((proj, idx) => (
@@ -1354,13 +1360,13 @@ export default function App() {
                         <div className="resume-exp-company">{proj.client}</div>
                       </div>
                     </div>
-                    <p style={{ margin: '2px 0 6px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>{proj.tagline}</p>
+                    <p className="resume-project-tagline">{proj.tagline}</p>
                     <ul className="resume-exp-bullets">
                       {proj.highlights.map((h, hIdx) => (
                         <li key={hIdx}>{h}</li>
                       ))}
                     </ul>
-                    <div style={{ marginTop: '4px', fontSize: '0.82rem', color: 'var(--accent-vibrant)' }}>
+                    <div className="resume-project-tech">
                       <strong>Technologies:</strong> {proj.technologies.join(', ')}
                     </div>
                   </div>
@@ -1371,7 +1377,7 @@ export default function App() {
             <hr className="resume-divider" />
 
             {/* Education */}
-            <section className="resume-section">
+            <section className="resume-section has-job-titles">
               <h2 className="resume-section-heading">EDUCATION</h2>
               <div className="resume-exp-list">
                 {education.map((edu, idx) => (
@@ -1404,7 +1410,7 @@ export default function App() {
 
             <hr className="resume-divider" />
 
-            {/* Declaration, Date & Signature */}
+            {/* Declaration, Date & Candidate Name */}
             <section className="resume-section resume-declaration-section">
               <p className="resume-declaration-text">
                 I hereby declare that all the information provided above is authentic and complete to the best of my knowledge and belief.
@@ -1418,11 +1424,8 @@ export default function App() {
                 </div>
 
                 <div className="resume-signature-col">
-                  <div className="resume-signature-canvas">
-                    <img src={signatureImg} alt="Nagaraj R - Candidate Signature" className="resume-signature-img" />
-                  </div>
-                  <div className="resume-signature-line" />
                   <span className="resume-sign-name">Nagaraj R</span>
+                  <span className="resume-sign-title">Senior Software Engineer</span>
                 </div>
               </div>
             </section>

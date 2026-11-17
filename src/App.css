@@ -381,6 +381,7 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -2351,488 +2352,664 @@
   }
 }
 
-/* Standard ATS Document Sheet */
+/* Standard ATS Document Sheet (A4 Portrait: 596 x 842 pt, 72 pt Margins, Strictly Monochrome Arial) */
 .resume-sheet {
-  background: var(--card-bg);
-  padding: 56px 64px;
-  border-radius: 24px;
-  box-shadow: var(--shadow-card);
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  font-family: 'Inter', sans-serif;
+  width: 596pt !important;
+  max-width: 596pt !important;
+  min-height: 842pt !important;
+  margin: 0 auto !important;
+  padding: 97pt 72pt 72pt 72pt !important;
+  /* Top offset: ~97pt, Left: 72pt, Right: 72pt, Bottom: 72pt */
+  background: #ffffff !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  word-spacing: normal !important;
+  text-align: left !important;
+  overflow-wrap: break-word !important;
 }
 
-/* High-Definition Clean PDF Export Mode (Ensures crisp ATS-compliant rendering during html2pdf download) */
+/* Enforce Arial & Normal Character Spacing (0 pt) throughout all resume sheet elements */
+.resume-sheet,
+.resume-sheet *,
+.resume-sheet *::before,
+.resume-sheet *::after {
+  font-family: Arial, Helvetica, sans-serif !important;
+  letter-spacing: 0 !important;
+  word-spacing: normal !important;
+  box-sizing: border-box;
+}
+
+/* Clean Monochrome PDF Export Mode (452pt printable width with 72pt margins on all pages) */
 .resume-sheet.pdf-export-mode {
+  width: 452pt !important;
+  max-width: 452pt !important;
+  min-height: auto !important;
+  padding: 25pt 0 0 0 !important;
+  /* Page 1 top margin: 72pt (pdf margin) + 25pt = 97pt header offset */
   background: #ffffff !important;
-  color: #111827 !important;
+  color: #000000 !important;
   box-shadow: none !important;
+  border: none !important;
   border-radius: 0 !important;
-  padding: 36px 42px !important;
-  width: 100% !important;
-  max-width: 800px !important;
+  box-sizing: border-box !important;
   margin: 0 auto !important;
+}
+
+/* Page break management for multi-page PDF export & Print */
+.resume-sheet-header,
+.resume-section-heading,
+.resume-exp-entry,
+.resume-skill-line,
+.resume-declaration-section,
+.resume-divider {
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+
+.resume-section-heading {
+  break-after: avoid !important;
+  page-break-after: avoid !important;
 }
 
 .resume-sheet.pdf-export-mode .resume-name,
 .resume-sheet.pdf-export-mode .resume-exp-role,
-.resume-sheet.pdf-export-mode .resume-skill-line strong,
-.resume-sheet.pdf-export-mode .resume-edu-degree,
-.resume-sheet.pdf-export-mode .resume-award-title,
-.resume-sheet.pdf-export-mode .resume-sign-name {
-  color: #111827 !important;
-}
-
 .resume-sheet.pdf-export-mode .resume-role,
+.resume-sheet.pdf-export-mode .resume-section-heading,
+.resume-sheet.pdf-export-mode .resume-skill-line strong,
+.resume-sheet.pdf-export-mode .resume-skill-label,
 .resume-sheet.pdf-export-mode .resume-exp-company,
-.resume-sheet.pdf-export-mode .resume-section-heading {
-  color: #1e3a8a !important;
-}
-
-.resume-sheet.pdf-export-mode .resume-section-heading {
-  border-bottom: 2px solid #e5e7eb !important;
-}
-
 .resume-sheet.pdf-export-mode .resume-contact-line,
+.resume-sheet.pdf-export-mode .resume-contact-line a,
+.resume-sheet.pdf-export-mode .resume-contact-line span,
+.resume-sheet.pdf-export-mode .resume-links-line,
+.resume-sheet.pdf-export-mode .resume-links-line a,
+.resume-sheet.pdf-export-mode .resume-links-line span,
 .resume-sheet.pdf-export-mode .resume-summary-text,
+.resume-sheet.pdf-export-mode .resume-award-desc,
 .resume-sheet.pdf-export-mode .resume-skill-line,
+.resume-sheet.pdf-export-mode .resume-skill-val,
 .resume-sheet.pdf-export-mode .resume-exp-bullets li,
-.resume-sheet.pdf-export-mode .resume-sign-date-col,
-.resume-sheet.pdf-export-mode .resume-sign-title {
-  color: #374151 !important;
-}
-
 .resume-sheet.pdf-export-mode .resume-exp-period,
-.resume-sheet.pdf-export-mode .resume-edu-period {
-  color: #4b5563 !important;
+.resume-sheet.pdf-export-mode .resume-project-tagline,
+.resume-sheet.pdf-export-mode .resume-project-tech,
+.resume-sheet.pdf-export-mode .resume-lang-item,
+.resume-sheet.pdf-export-mode .resume-declaration-text,
+.resume-sheet.pdf-export-mode .resume-meta-label,
+.resume-sheet.pdf-export-mode .resume-meta-val,
+.resume-sheet.pdf-export-mode .resume-sign-name,
+.resume-sheet.pdf-export-mode .resume-sign-title {
+  color: #000000 !important;
 }
 
-.resume-sheet.pdf-export-mode .resume-photo-box {
+.resume-sheet.pdf-export-mode .resume-divider {
   border: none !important;
+  border-top: 1px solid #000000 !important;
+  height: 0 !important;
+  background: transparent !important;
   box-shadow: none !important;
+  margin: 16pt 0 18pt 0 !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  display: block !important;
 }
 
-.resume-sheet.pdf-export-mode .resume-signature-line {
-  border-top: 1.5px solid #9ca3af !important;
-}
-
-.resume-sheet.pdf-export-mode .resume-signature-img,
-[data-theme="cyber"] .resume-sheet.pdf-export-mode .resume-signature-img {
-  filter: none !important;
-  mix-blend-mode: multiply !important;
-}
-
+/* Header Structure */
 .resume-sheet-header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: left !important;
+  margin-bottom: 0 !important;
 }
 
-.resume-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 26px;
-}
-
-.resume-photo-box {
-  width: 100px;
-  height: 126px;
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-  flex-shrink: 0;
-  overflow: hidden;
-  background: transparent;
-}
-
-.resume-profile-photo {
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-  border: none;
-  object-fit: cover;
-  object-position: 50% 15%;
-  display: block;
-}
-
-.resume-header-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1;
-  text-align: left;
-}
-
+/* 1. Candidate Name: 23 pt, Bold, No Color */
 .resume-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.15rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: var(--text-primary);
-  margin: 0;
-  line-height: 1.1;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 23pt !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  margin: 0 0 10pt !important;
+  text-align: left !important;
 }
 
+/* 2. Job Titles (Main Designation): 17 pt, Bold, No Color */
 .resume-role {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--accent-vibrant);
-  margin: 0;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 17pt !important;
+  font-weight: 700 !important;
+  line-height: 1.32 !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  margin: 6pt 0 0 0 !important;
+  text-align: left !important;
 }
 
+/* Contact Line: 11 pt, Regular, Line Spacing: 14.55 pt, Left Position: 72 pt */
 .resume-contact-line {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  flex-wrap: wrap;
-  font-size: 0.84rem;
-  color: var(--text-muted);
-  margin-top: 4px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8pt !important;
+  flex-wrap: wrap !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  margin-top: 8pt !important;
+  text-align: left !important;
 }
 
-.resume-contact-line a {
-  color: var(--accent-vibrant);
-  text-decoration: none;
-  font-weight: 500;
+.resume-contact-line span,
+.resume-links-line span {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  color: #000000 !important;
+}
+
+.resume-contact-line a,
+.resume-links-line a {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  color: #000000 !important;
+  text-decoration: underline !important;
+}
+
+/* Links Line: GitHub & LinkedIn on following line */
+.resume-links-line {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8pt !important;
+  flex-wrap: wrap !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  margin-top: 4pt !important;
+  text-align: left !important;
+}
+
+/* Sections: Consistent vertical spacing separated by hairline dividers */
+.resume-section {
+  display: flex !important;
+  flex-direction: column !important;
+  margin-bottom: 0 !important;
+  text-align: left !important;
 }
 
 .resume-divider {
-  border: none;
-  height: 1px;
-  background: var(--badge-bg);
-  box-shadow: var(--divider-shadow);
-  margin: 2px 0;
+  border: none !important;
+  border-top: 1px solid #000000 !important;
+  height: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  margin: 20pt 0 25pt 0 !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  display: block !important;
 }
 
-.resume-section {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
+/* Main Section Headings: 23 pt, Bold, No Color */
+/* Section heading to content: Approximately 29–30 pt visible gap */
 .resume-section-heading {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.02rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent-vibrant);
-  margin: 0;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 23pt !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+  color: #000000 !important;
+  margin: 16.5pt 0 !important;
+  text-align: left !important;
 }
 
-.resume-summary-text {
-  font-size: 0.94rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  margin: 0;
-  text-align: justify;
+/* Section heading to job title: Approximately 22–23 pt visible gap */
+.resume-section.has-job-titles .resume-section-heading,
+.resume-section:has(.resume-exp-list) .resume-section-heading {
+  margin-bottom: 10.5pt !important;
 }
 
-.resume-skills-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* Body Content: 11 pt, Regular, Line Spacing: 14.55 pt (ratio 1.32), Paragraph alignment: Left */
+.resume-summary-text,
+.resume-award-desc {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  margin: 0 !important;
+  text-align: left !important;
 }
+
+/* Technical Skills: Row Baseline Spacing: 26.55 pt */
 
 .resume-skill-line {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: var(--text-secondary);
+  align-items: baseline !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  margin: 0 0 15px !important;
+  text-align: left !important;
 }
 
+/* Skill Labels: 11 pt, Bold */
 .resume-skill-line strong,
 .resume-skill-label {
-  color: var(--text-primary);
-  font-weight: 700;
-  width: 220px;
-  min-width: 220px;
-  max-width: 220px;
-  flex-shrink: 0;
-  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 700 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+  margin: 0 !important;
+  text-align: left !important;
 }
 
+/* Technology descriptions (Skill values): 11 pt, Regular */
 .resume-skill-val {
-  color: var(--text-secondary);
-  flex: 1;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  flex: 1 !important;
+  margin-left: 10px !important;
+  text-align: left !important;
 }
 
+/* Experience & Project Lists */
 .resume-exp-list {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20pt !important;
 }
 
 .resume-exp-entry {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  text-align: left !important;
 }
 
 .resume-exp-entry-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 6px;
+  justify-content: space-between !important;
+  align-items: baseline !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-bottom: 8pt !important;
 }
 
+/* Job Titles & Project Titles: 17 pt, Bold */
 .resume-exp-role {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 17pt !important;
+  font-weight: 700 !important;
+  line-height: 1.32 !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  margin: 0 !important;
+  text-align: left !important;
 }
 
+/* Company names: 11 pt, Bold */
+/* Project title to company details: Approximately 15 pt visible gap */
 .resume-exp-company {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--accent-vibrant);
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 700 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  margin: 15pt 0 0 0 !important;
+  text-align: left !important;
 }
 
+/* Dates: 11 pt, Bold */
 .resume-exp-period {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-muted);
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 700 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
 }
 
+/* Bullet Text Indentation & Padding:
+   Main content left position: 72 pt (container padding-left)
+   Bullet text left position: 90 pt (36pt padding - 18pt text-indent = +18pt from 72pt = 90pt)
+   Wrapped bullet lines left position: 108 pt (36pt padding from 72pt = 108pt)
+   Bullet indentation: 18 pt */
 .resume-exp-bullets {
-  margin: 0;
-  padding-left: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
+  margin: 0 !important;
+  padding-left: 26pt !important;
+  list-style-type: disc !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4pt !important;
 }
 
-.resume-languages-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 24px;
+.resume-exp-bullets li {
+  padding-left: 0 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  text-align: left !important;
 }
+
+/* Project Tagline and Tech */
+.resume-project-tagline {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  margin: 4pt 0 6pt 0 !important;
+  text-align: left !important;
+}
+
+/* Project description to technology list: Approximately 14 pt visible gap */
+.resume-project-tech {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  margin: 14pt 0 0 0 !important;
+  text-align: left !important;
+}
+
+.resume-project-tech strong {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 700 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+}
+
+/* Languages */
 
 .resume-lang-item {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-.resume-lang-item strong {
-  color: var(--text-primary);
-  font-weight: 700;
-}
-
-/* Declaration, Date & Signature */
-.resume-declaration-section {
-  gap: 14px;
-}
-
-.resume-declaration-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.86rem;
-  line-height: 1.6;
-  color: var(--text-muted);
-  font-style: italic;
-  margin: 0;
-}
-
-.resume-sign-grid {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  margin-top: 8px;
-  padding-top: 6px;
-}
-
-.resume-sign-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.resume-meta-row {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-}
-
-.resume-meta-label {
-  font-weight: 700;
-  color: var(--text-primary);
-  min-width: 48px;
-}
-
-.resume-meta-val {
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-.resume-signature-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  min-width: 190px;
-}
-
-.resume-signature-canvas {
-  height: 56px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
-.resume-signature-img {
-  max-height: 54px;
-  width: auto;
-  max-width: 175px;
-  object-fit: contain;
-  display: block;
-  mix-blend-mode: multiply;
-  user-select: none;
-  pointer-events: none;
-}
-
-[data-theme="cyber"] .resume-signature-img {
-  filter: invert(1);
-  mix-blend-mode: screen;
-}
-
-.resume-signature-line {
-  width: 190px;
-  height: 1.5px;
-  background: var(--badge-bg);
-  box-shadow: var(--divider-shadow);
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
   margin-bottom: 5px;
 }
 
+.resume-lang-item strong {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 700 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+}
+
+/* Declaration & Date */
+.resume-declaration-section {
+  gap: 12pt !important;
+}
+
+.resume-declaration-text {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  font-style: italic !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+.resume-sign-grid {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  gap: 24pt !important;
+  margin-top: 14pt !important;
+}
+
+.resume-sign-meta {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6pt !important;
+}
+
+.resume-meta-row {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 8pt !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+}
+
+.resume-meta-label {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 700 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  min-width: 48px !important;
+}
+
+/* Dates: 11 pt, Bold */
+.resume-meta-val {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 700 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+}
+
+.resume-signature-col {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  text-align: right !important;
+  gap: 2pt !important;
+}
+
 .resume-sign-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.94rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: 0.02em;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 700 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
 }
 
 .resume-sign-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.76rem;
-  color: var(--text-muted);
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+  font-weight: 400 !important;
+  line-height: 14.55pt !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
 }
 
 /* ==========================================================================
-   PRINT MEDIA STYLESHEET (CLEAN BLACK & WHITE ATS EXPORT)
+   PRINT MEDIA STYLESHEET (STRICT A4 PORTRAIT 596 x 842 pt ATS SPECIFICATION)
    ========================================================================== */
+@page {
+  size: 596pt 842pt;
+  margin: 72pt;
+}
+
 @media print {
+  @page {
+    size: 596pt 842pt;
+    margin: 72pt;
+  }
 
   body,
   .portfolio-app {
     background: #ffffff !important;
-    color: #111827 !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
   }
 
   .top-controls-bar,
   .ambient-light-light,
   .ambient-light-bottom,
-  .no-print {
+  .no-print,
+  .resume-action-bar {
     display: none !important;
   }
 
   .resume-view-container {
     padding: 0 !important;
     max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
   }
 
   .resume-sheet {
     box-shadow: none !important;
-    padding: 0 !important;
+    padding: 25pt 0 0 0 !important;
+    /* First page top offset: 72pt + 25pt = 97pt; 2nd, 3rd, 4th pages have 72pt top margin */
+    border: none !important;
     border-radius: 0 !important;
     background: #ffffff !important;
-    color: #111827 !important;
+    color: #000000 !important;
+    width: 100% !important;
+    max-width: 452pt !important;
+    min-height: auto !important;
+    margin: 0 !important;
   }
 
-  .resume-name,
-  .resume-exp-role,
-  .resume-skill-line strong,
-  .resume-skill-label {
-    color: #111827 !important;
+  .resume-sheet,
+  .resume-sheet * {
+    font-family: Arial, Helvetica, sans-serif !important;
+    letter-spacing: 0 !important;
+    color: #000000 !important;
+  }
+
+  .resume-name {
+    font-size: 23pt !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    color: #000000 !important;
+  }
+
+  .resume-section-heading {
+    font-size: 23pt !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    color: #000000 !important;
+    text-transform: uppercase !important;
+    margin: 0 0 29.5pt 0 !important;
+  }
+
+  .resume-section.has-job-titles .resume-section-heading,
+  .resume-section:has(.resume-exp-list) .resume-section-heading {
+    margin-bottom: 22.5pt !important;
   }
 
   .resume-role,
+  .resume-exp-role {
+    font-size: 17pt !important;
+    font-weight: 700 !important;
+    line-height: 1.32 !important;
+    color: #000000 !important;
+  }
+
   .resume-exp-company,
-  .resume-section-heading {
-    color: #1e3a8a !important;
+  .resume-skill-line strong,
+  .resume-skill-label,
+  .resume-meta-label,
+  .resume-sign-name,
+  .resume-lang-item strong,
+  .resume-project-tech strong {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+    line-height: 14.55pt !important;
+    color: #000000 !important;
+  }
+
+  .resume-exp-period,
+  .resume-meta-val {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+    line-height: 14.55pt !important;
+    color: #000000 !important;
   }
 
   .resume-contact-line,
+  .resume-contact-line a,
+  .resume-contact-line span,
+  .resume-links-line,
+  .resume-links-line a,
+  .resume-links-line span,
   .resume-summary-text,
+  .resume-award-desc,
   .resume-skill-line,
   .resume-skill-val,
+  .resume-exp-bullets li,
+  .resume-project-tagline,
+  .resume-project-tech,
+  .resume-declaration-text,
+  .resume-sign-title {
+    font-size: 11pt !important;
+    font-weight: 400 !important;
+    line-height: 14.55pt !important;
+    color: #000000 !important;
+  }
+
+
+  .resume-exp-bullets {
+    padding-left: 26pt !important;
+  }
+
   .resume-exp-bullets li {
-    color: #374151 !important;
-  }
-
-  .resume-exp-period {
-    color: #4b5563 !important;
-  }
-
-  .resume-photo-box {
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  .resume-profile-photo {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
+    padding-left: 0 !important;
   }
 
   .resume-divider {
-    background: #e5e7eb !important;
-    box-shadow: none !important;
-  }
-
-  .resume-declaration-text {
-    color: #4b5563 !important;
-  }
-
-  .resume-meta-label,
-  .resume-sign-name {
-    color: #111827 !important;
-  }
-
-  .resume-meta-val,
-  .resume-sign-title {
-    color: #374151 !important;
-  }
-
-  .resume-signature-line {
-    background: #374151 !important;
-    box-shadow: none !important;
-  }
-
-  [data-theme="cyber"] .resume-signature-img,
-  .resume-signature-img {
-    filter: none !important;
-    mix-blend-mode: multiply !important;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
+    border: none !important;
+    border-top: 1px solid #000000 !important;
+    height: 0 !important;
+    background: transparent !important;
+    display: block !important;
+    margin: 16pt 0 18pt 0 !important;
+    width: 100% !important;
   }
 }
 
@@ -3036,6 +3213,7 @@
 
 /* 3. STANDARD MOBILE PHONES (<= 600px) */
 @media (max-width: 600px) {
+
   /* Navigation bar */
   .website-nav-header {
     padding: 8px 14px;
@@ -3332,22 +3510,17 @@
 
   /* ATS Resume View on Mobile */
   .resume-sheet {
-    padding: 24px 16px;
-    border-radius: 12px;
-  }
-
-  .resume-name {
-    font-size: 1.6rem;
-  }
-
-  .resume-role {
-    font-size: 0.95rem;
+    width: 100% !important;
+    max-width: 596pt !important;
+    padding: 24px 16px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
   }
 
   .resume-skill-line {
     flex-direction: column;
     align-items: flex-start;
-    gap: 3px;
   }
 
   .resume-skill-line strong,
