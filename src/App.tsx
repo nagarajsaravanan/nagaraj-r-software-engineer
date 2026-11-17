@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import profilePhoto from './assets/profile.jpeg'
-import signatureImg from './assets/signature.png'
 import './App.css'
 
 type ThemeMode = 'luminous' | 'monochrome' | 'executive' | 'cyber'
