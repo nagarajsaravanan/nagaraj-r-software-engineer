@@ -396,11 +396,11 @@ export default function App() {
         <header className="website-nav-header">
           <div className="nav-container">
             {/* Brand Monogram & Title */}
-            <a href="#hero" className="nav-brand-group" title="Nagaraj R - Senior Systems Engineer">
+            <a href="#hero" className="nav-brand-group" title="Nagaraj R - Senior Software Engineer">
               <div className="nav-monogram">NR</div>
               <div className="nav-brand-text">
                 <span className="nav-brand-name">NAGARAJ R</span>
-                <span className="nav-brand-role">Senior Systems Engineer</span>
+                <span className="nav-brand-role">Senior Software Engineer</span>
               </div>
             </a>
 
@@ -993,7 +993,7 @@ export default function App() {
               <div className="footer-top-grid">
                 {/* Column 1: Identity & Architect Overview */}
                 <div className="footer-col-brand">
-                  <a href="#hero" className="footer-brand-header" title="Nagaraj R - Senior Systems Engineer">
+                  <a href="#hero" className="footer-brand-header" title="Nagaraj R - Senior Software Engineer">
                     <div className="footer-monogram-lg">NR</div>
                     <div className="footer-brand-titles">
                       <span className="footer-brand-name">NAGARAJ R</span>
